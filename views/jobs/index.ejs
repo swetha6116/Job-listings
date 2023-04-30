@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/public/stylesheets/style.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="/public/javascript/script.js"></script>
+    <title>job-listings</title>
+</head>
+<body>
+    <script>
+        var button = document.getElementById("myButton");
+            button.addEventListener("click", function() {
+                button.classList.add("clicked");
+                console.log("clicked abcd")
+        });
+
+    </script>
+    <br>
+    <%
+    
+        const cardColors = {
+            green: "rgb(119, 214, 119)",
+            yellow: "rgb(255, 255, 157)",
+            red: "rgb(248, 115, 115)"
+        };
+        
+        const calculateDaysLeft = (date) => {
+            const oneDay = 24 * 60 * 60 * 1000;
+            const today = new Date();
+            return Math.round((date - today) / oneDay);
+        };
+
+    
+        const getColor = (daysLeft) => {
+            if (daysLeft > 21) {
+            return cardColors.green;
+            } else if (daysLeft > 3) {
+            return cardColors.yellow;
+            } else {
+            return cardColors.red;
+            }
+        };
+
+        const getInterestedStateColor = (isInterested) => {
+            if (isInterested) {
+            return "clicked";
+            } else {
+            return cardColors.red;
+            }
+        };
+
+        const isApplicant = (userType) => {
+            if (userType == "applicant") {
+            return true;
+            } else {
+                return false;
+            }
+        };
+  
+    %>
+
+
+    <div class="header">
+        <div class="logo">
+            <img src="/public/stylesheets/company-logo.png" alt="company Logo" />
+        </div>
+
+        <div class="title">
+            <h1>Careers at Bula</h1>
+        </div>
+
+        <div class="title">
+            <% if (curUser.userType === 'recruiter') { %>
+            <a class="button" style="margin-right: 10px" href="/jobs/new">Create Job</a>
+            <% } %>
+            <a class="button" style="margin-right: 10px" href="/logout">logout</a>
+            <img src="/public/stylesheets/user-logo.png" alt="user Logo" />
+            <h1><%= currentUser.username %></h1>
+        </div>
+    </div>
+
+    <div class="main">
+        <ul class="sortable-list">
+    
+            <% for(let job of jobs) { %>
+                <li class="item" id="item" draggable="true" >
+                
+                    <div id="card" class="details"   style="background: <%= getColor(calculateDaysLeft(job.deadline)) %>">
+                        <div class="card-image" draggable="true">
+                            <p style="font-weight: bold;">Location: <%= job.location%> </p>
+                            
+                            <p> Application deadline: <%= job.deadline.toDateString()%> </p>
+                        </div>
+                        <div class="card-des" >
+                            <% if (curUser.userType === 'recruiter') { %>
+                                <h3 class="card-title" draggable="false"><a href="/jobs/<%=job._id%>"> <%= job.title%> </a></h3>
+                            <% } %>
+                            <% if (curUser.userType === 'applicant') { %>
+                                <h3 class="card-title" draggable="false"><%= job.title%></h3>
+                            <% } %>
+                            <p class="card-description"><%= job.description%></p>
+                            
+                            <p>Contact info: <%= job.email%></p>
+                        </div>
+                        <div class="drag-button" style="visibility: hidden">
+                            <button class="hamburger-button">
+                                <p>...</p>
+                            </button>
+
+                        </div>
+                        <div class="button-group">
+                            <% if (curUser.userType === 'recruiter') { %>
+                                <a class="button" href="/jobs/<%=job._id%>/edit">Edit</a>
+                            <% } %>
+
+                            <% if (curUser.userType === 'recruiter') { %>
+                                <form action="/jobs/<%=job._id%>?_method=POST" method="POST">
+                                    <button class="delete-button"> Archive </button>
+                                </form>
+                            <% } %>
+                
+                            <form action="/interested/jobs/<%=job._id%>?_method=POST" method="POST">
+                                <% if (curUser.userType === 'applicant') { %>
+                                    <button id="myButton" class="<%= getInterestedStateColor(job.interestedApplicants.includes(curUser.username)) %> myButton"> Interested </button>
+                                <% } %>
+                            </form>
+                        </div>
+                        <i class="uil uil-draggabledots"></i>
+                    </div>
+                </li>
+            <% } %>
+        </ul>  
+    </div>
+
+    <div class="container">
+        <% if (curUser.userType === 'recruiter') { %>
+            <form action="/jobs/archived">
+                <button class="button"> Archived </button>
+            </form>
+        <% } %>
+    </div>
+    
+
+    
+</body>
+</html>

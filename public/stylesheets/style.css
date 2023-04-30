@@ -1,0 +1,188 @@
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+.drag{
+  margin-right: 15px;
+  font-size: 40px;
+  cursor: pointer;
+}
+.drag p{
+  color: grey;
+  margin-top: 0px;
+}
+.drag p:hover{
+  color: black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.logo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+  background-color: transparent;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.title img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.title h1 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+}
+.body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.sortable-list {
+  /* display: flex;
+  flex-direction: column; */
+  padding: 25px;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  
+  
+}
+.item {
+  list-style: none;
+  width: 100%;
+  justify-content: center;
+  /* display: flex;
+  cursor: move;
+  align-items: center; */
+  /* border-radius: 5px;
+  padding:20px; */
+  /* box-shadow: 0 2px 4px rgba(0,0,0,0.06); */
+  /* border: 1px solid #ccc; */
+  /* justify-content: space-between;
+  background-color: burlywood; */
+}
+.details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06); 
+  border: 1px solid #ccc;
+  align-items: center;
+  /* pointer-events: none; */
+  padding: 20px;
+}
+.card-img {
+  width: 40%;
+  padding: 10rem;
+  pointer-events: none;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.card-img img{
+  border-radius: 20%;
+}
+.card-des{
+  width: 55%;
+  padding: 10px;
+}
+
+.drag-button{
+  width: 5%;
+  justify-content: top;
+}
+
+span {
+  font-size: 1.13rem;
+}
+.item i {
+  color: #474747;
+  font-size: 1.13rem;
+}
+.item.dragging {
+  opacity: 0.6;
+}
+.item.dragging :where(.details, i) {
+  opacity: 0;
+}
+
+.hamburger-button{
+  text-align: center;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.container {
+    
+  max-width: 50%;
+  margin: 0 auto;
+  margin:50px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-content: center;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #a202ff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #520081ab;
+}
+
+
+.myButton.clicked {
+  background-color: green; /* Change the background color of the button when clicked */
+}
+
+.myButton {
+  background-color: grey; /* Set the initial background color of the button */
+  color: white; /* Set the text color of the button */
+  border: none; /* Remove the border around the button */
+  padding: 10px 20px; /* Add some padding to the button */
+  cursor: pointer; /* Change the cursor to a pointer when hovering over the button */
+  border-radius: 2%;
+}
+
+.myButton:hover{
+  cursor: pointer;
+}
+
+.abcd .myButton.clicked::after {
+  content: "\2713"; /* Add a tick symbol using CSS pseudo-elements */
+  font-size: 20px; /* Set the font size of the tick symbol */
+  position: relative; /* Position the tick symbol absolutely */
+  bottom: 0%; /* Set the top position to 50% */
+  left: 50%; /* Set the left position to 50% */
+  /* transform: translate(-50%, -50%); Center the tick symbol horizontally and vertically */
+}

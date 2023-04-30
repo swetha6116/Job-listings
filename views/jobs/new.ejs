@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/public/stylesheets/newStyle.css">
+    <title>new job</title>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="/jobs">
+                <img src="/public/stylesheets/company-logo.png" alt="company Logo" />
+            </a>
+        </div>
+        <div class="title">
+            <h1>Careers at Bula</h1>
+        </div>
+        <div class="title">
+            <img src="/public/stylesheets/user-logo.png" alt="user Logo" />
+            <h1>username</h1>
+        </div>
+    </div>
+    <form action="/jobs" method="POST">
+        <h1>Create new Job</h1>
+        <label for="title">Job Title</label>
+        <input type="text" placeholder="Job Title" name="title" required>
+
+
+        <label for="description">Job Description</label>
+        <input type="text" placeholder="Job Description" name="description" required>
+
+
+        <label for="location">Location</label>
+        <select name="location" id="location">
+            <option value="chennai">Chennai</option>
+            <option value="bangalore">Bangalore</option>
+        </select>
+
+
+        <label for="deadline">Application deadline:</label>
+        <input type="date" id="deadline" name="deadline">
+
+
+        <label for="phone">Contact phone number:</label>
+        <input type="number" placeholder="phone number" name="phone" required>
+
+
+        <label for="email">Contact Email</label>
+        <input type="email" placeholder="email" name="email" required>
+
+
+        <button type="submit">Create Job</button>
+    </form>
+    
+</body>
+</html>

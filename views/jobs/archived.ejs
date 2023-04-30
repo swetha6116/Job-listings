@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/public/stylesheets/style.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="/public/javascript/script.js"></script>
+    <title>job-listings</title>
+</head>
+<body>
+    <br>
+    <div class="header">
+        <div class="logo" >
+            <a href="/jobs">
+                <img src="/public/stylesheets/company-logo.png" alt="company Logo" />
+            </a>
+            
+        </div>
+        <div class="title">
+            <h1>Careers at Bula</h1>
+        </div>
+        <div class="title">
+            <img src="/public/stylesheets/user-logo.png" alt="user Logo" />
+            <h1>username</h1>
+        </div>
+    </div>
+    <div class="main">
+    <ul class="sortable-list">
+        <% for(let job of jobs) { %>
+            <li class="item" id="item" draggable="true" >
+            
+                <div id="card" class="details">
+                    <div class="card-image" draggable="true">
+                        <p style="font-weight: bold;">Location: <%= job.location%></p>
+                        <p>Application deadline: <%= job.deadline.toDateString()%> </p>
+                    </div>
+                    <div class="card-des" >
+                        <h3 class="card-title" draggable="false"><a href="/jobs/<%=job._id%>"> <%= job.title%> </a></h3>
+                        <p class="card-description"><%= job.description%></p>
+                        
+                        <p>Contact info: <%= job.email%></p>
+                    </div>
+                    <div class="drag-button">
+                        <button class="hamburger-button">
+                            <p>...</p>
+                        </button>
+
+                    </div>
+
+                </div>
+                <i class="uil uil-draggabledots"></i>
+            </li>
+        <% } %>
+    </ul>  
+    <div class="container">
+        
+        <a class="button" href="/jobs">All Jobs</a>
+    </div>
+</body>
+</html>

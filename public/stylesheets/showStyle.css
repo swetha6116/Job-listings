@@ -1,0 +1,106 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+    background-color: transparent;
+  }
+  
+  .title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .title img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .title h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  .container {
+    
+    max-width: 50%;
+    margin: 0 auto;
+    margin:50px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-content: center;
+  }
+  
+  .sortable-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  .sortable-list li {
+    margin-bottom: 10px;
+  }
+  
+  .sortable-list li strong {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #a202ff;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #520081ab;
+  }
+  
+  .delete-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
