@@ -3,3 +3,9 @@
 
 [dev]
   publish = "dist"
+
+# Redirect with a 301
+[[redirects]]
+from = "/"
+to = "/.netlify/functions/api"
+status = 301
