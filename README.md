@@ -20,7 +20,8 @@ Technologies used:
 7. Passport.js
 
 Design Decisions:
-1.Decided to use MongoDB to create user models - recruiter and applicant to manage fucntionalities particular to them.
+
+1. Decided to use MongoDB to create user models - recruiter and applicant to manage fucntionalities particular to them.
 2. Created two collections for user and job. Used an array as an attribute of a job to store the names of interested applicants for a job role.
 3. Used passport.js for the login/sign up module because its clean authentication strategies.
 4. Added a grey color on top of the requirements specified so that an applicant knows its past the dealine.
@@ -34,8 +35,23 @@ To solve this we can create two different tables for the active jobs and unactiv
 
 There will be a huge number of applicants applying for a job hence we can provide a way to categorize them based on their experience, education etc
 
+To run this application
 
-
+1. Clone the repo
+2. Install node.js
+3. Install mongoDB and mongo shell
+4. run the applciation in localhost 3000
+```
+$ git clone https://example.com
+$ cd ../path/to/the/file
+$ npm install
+$ npm init -y
+$ npm install express-session
+$ npm install passport passport-local passport-local-mongoose
+$ npm install method-override
+$ node seed.js
+$ nodemon index.js
+```
 Check out the video below for a run through of the applciation.
 
 https://user-images.githubusercontent.com/89096691/235421124-cc35c381-a453-4156-856d-5f359fd95dbb.mp4
