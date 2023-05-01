@@ -3,29 +3,29 @@
 Created a customised job listings board for a company. Applicants can mark a job that they are interested in. Recruiters can manage the job listings and view interested applicants.
 
 Features:
-There are primarily two different types of users - recruiter and applicant.
-Applicants can view all the job listings and mark his interest for each job role.
-Recruiter can create, edit and archive a job listing.
-Recruiter can view interested applciants of a job.
-The job listings gets colour coded when they are created (the listing which are due in more than 21 days is green, less than 14 days is yellow and less than 3 days is be red and the jobs which are past the deadline is grey.
-Recruiter can darg and drop to rearrange the order of the job listings
+1. There are primarily two different types of users - recruiter and applicant.
+2. Applicants can view all the job listings and mark his interest for each job role.
+3. Recruiter can create, edit and archive a job listing.
+4. Recruiter can view interested applciants of a job.
+5. The job listings gets colour coded when they are created (the listing which are due in more than 21 days is green, less than 14 days is yellow and less than 3 days is be red and the jobs which are past the deadline is grey.
+6. Recruiter can darg and drop to rearrange the order of the job listings
 
 Technologies used:
-HTML
-CSS 
-JS
-Node.js
-express
-MongoDB
-Passport.js
+1. HTML
+2. CSS 
+3. JS
+4. Node.js
+5. express
+6. MongoDB
+7. Passport.js
 
 Design Decisions:
-Decided to use MongoDB to create user models - recruiter and applicant to manage fucntionalities particular to them.
-Created two collections for user and job. Used an array as an attribute of a job to store the names of interested applicants for a job role.
-Used passport.js for the login/sign up module because its clean authentication strategies.
-Added a grey color on top of the requirements specified so that an applicant knows its past the dealine.
-Provided button for edit, archive within the job card for the recruiter for easy access.
-Used a index to identify the active and archived job listings.
+1.Decided to use MongoDB to create user models - recruiter and applicant to manage fucntionalities particular to them.
+2. Created two collections for user and job. Used an array as an attribute of a job to store the names of interested applicants for a job role.
+3. Used passport.js for the login/sign up module because its clean authentication strategies.
+4. Added a grey color on top of the requirements specified so that an applicant knows its past the dealine.
+5. Provided button for edit, archive within the job card for the recruiter for easy access.
+6. Used a index to identify the active and archived job listings.
  
 Scalability Concerns:
 If the recruiters decide they need a record of all the job listings right from the start then there will a huge amount of listings in the database after years, then to retrieve the active jobs becomes a concern
