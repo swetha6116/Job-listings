@@ -10,8 +10,8 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 const MongoDBStore = require("connect-mongo")(session); 
 
-//'localhost:27017/jobListings'
-const dbUrl = process.env.DB_URL
+//'localhost:27017/jobListings' process.env.DB_URL
+const dbUrl = 'mongodb://localhost:27017/jobListings'
 const userRoutes = require('./routes/users')
 
 const Job = require('./models/job');
@@ -90,7 +90,7 @@ app.post('/jobs', async (req, res) => {
     const newJob = new Job(req.body)
     await newJob.save()
     console.log(newJob)
-    res.redirect(`jobs/${newJob._id}`)
+    res.redirect(`jobs`)
 })
 
 app.get('/jobs', async (req, res) => {
@@ -128,7 +128,7 @@ app.put('/jobs/:id', async (req, res) => {
     const { id } = req.params;
     const job = await Job.findByIdAndUpdate(id, req.body,{ active: true } ,{ runValidators: true, new: true})
     console.log(req.body)
-    res.redirect(`/jobs/${job._id}`);
+    res.redirect(`/jobs`);
 })
 
 

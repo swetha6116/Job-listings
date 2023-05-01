@@ -13,53 +13,128 @@
     <title>job-listings</title>
 </head>
 <body>
+    <script>
+        var button = document.getElementById("myButton");
+            button.addEventListener("click", function() {
+                button.classList.add("clicked");
+                console.log("clicked abcd")
+        });
+
+    </script>
     <br>
+    <%
+    
+        const cardColors = {
+            green: "rgb(119, 214, 119)",
+            yellow: "rgb(255, 255, 157)",
+            red: "rgb(248, 115, 115)",
+            grey: "#666"
+        };
+        
+        const calculateDaysLeft = (date) => {
+            const oneDay = 24 * 60 * 60 * 1000;
+            const today = new Date();
+            return Math.round((date - today) / oneDay);
+        };
+
+    
+        const getColor = (daysLeft) => {
+            if (daysLeft > 21) {
+            return cardColors.green;
+            } else if (daysLeft > 3) {
+            return cardColors.yellow;
+            } else if (daysLeft >= 0) {
+            return cardColors.red;
+            }
+            else{
+            return cardColors.grey;
+            }
+        };
+
+        const getInterestedStateColor = (isInterested) => {
+            if (isInterested) {
+            return "clicked";
+            } else {
+            return cardColors.red;
+            }
+        };
+
+        const isApplicant = (userType) => {
+            if (userType == "applicant") {
+            return true;
+            } else {
+                return false;
+            }
+        };
+  
+    %>
+
+
     <div class="header">
-        <div class="logo" >
-            <a href="/jobs">
-                <img src="/public/stylesheets/company-logo.png" alt="company Logo" />
-            </a>
-            
+        <div class="logo">
+            <img src="/public/stylesheets/company-logo.png" alt="company Logo" />
         </div>
+
         <div class="title">
-            <h1>Careers at Bula</h1>
+            <h1>Archived Jobs</h1>
         </div>
+
         <div class="title">
+           
+            <a class="button" style="margin-right: 10px" href="/jobs/new">Create Job</a>
+    
+            <a class="button" style="margin-right: 10px" href="/logout">logout</a>
             <img src="/public/stylesheets/user-logo.png" alt="user Logo" />
-            <h1>username</h1>
+            <h1><%= currentUser.username %></h1>
         </div>
+    </div>
+     <div class="container">
+        
+        <a class="button" href="/jobs">Back to all Jobs</a>
     </div>
     <div class="main">
-    <ul class="sortable-list">
-        <% for(let job of jobs) { %>
-            <li class="item" id="item" draggable="true" >
-            
-                <div id="card" class="details">
-                    <div class="card-image" draggable="true">
-                        <p style="font-weight: bold;">Location: <%= job.location%></p>
-                        <p>Application deadline: <%= job.deadline.toDateString()%> </p>
-                    </div>
-                    <div class="card-des" >
-                        <h3 class="card-title" draggable="false"><a href="/jobs/<%=job._id%>"> <%= job.title%> </a></h3>
-                        <p class="card-description"><%= job.description%></p>
-                        
-                        <p>Contact info: <%= job.email%></p>
-                    </div>
-                    <div class="drag-button">
-                        <button class="hamburger-button">
-                            <p>...</p>
-                        </button>
+        <ul class="sortable-list">
+    
+            <% for(let job of jobs) { %>
+                <li class="item" id="item" draggable="true" >
+                
+                    <div id="card" class="details"   style="background: <%= getColor(calculateDaysLeft(job.deadline)) %>">
+                        <div class="card-image" draggable="true">
+                            <p style="font-weight: bold;">Location: <%= job.location%> </p>
+                            
+                            <p style="font-weight: bold;">Deadline: <%= job.deadline.toDateString()%> </p>
+                            <p >Contact number: <%= job.phone%></p>
+                            <p>Contact email: <%= job.email%></p>
+                        </div>
+                        <div class="card-des" >
+                            
+                                <h3 class="card-title" draggable="false"><%= job.title%></h3>
+                           
+                            <p class="card-description"><%= job.description%></p>
+                            
+                            
+                        </div>
+                        <div class="drag-button" style="visibility: hidden">
+                            <button class="hamburger-button">
+                                <p>...</p>
+                            </button>
 
+                        </div>
+                        <div class="button-group">
+                                
+                        </div>
+                        <i class="uil uil-draggabledots"></i>
                     </div>
-
-                </div>
-                <i class="uil uil-draggabledots"></i>
-            </li>
-        <% } %>
-    </ul>  
-    <div class="container">
-        
-        <a class="button" href="/jobs">All Jobs</a>
+                </li>
+            <% } %>
+        </ul>  
     </div>
+
+    <div class="container">
+      
+    </div>
+    
+
+    
 </body>
 </html>

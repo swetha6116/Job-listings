@@ -27,7 +27,8 @@
         const cardColors = {
             green: "rgb(119, 214, 119)",
             yellow: "rgb(255, 255, 157)",
-            red: "rgb(248, 115, 115)"
+            red: "rgb(248, 115, 115)",
+            grey: "#666"
         };
         
         const calculateDaysLeft = (date) => {
@@ -42,8 +43,11 @@
             return cardColors.green;
             } else if (daysLeft > 3) {
             return cardColors.yellow;
-            } else {
+            } else if (daysLeft >= 0) {
             return cardColors.red;
+            }
+            else{
+            return cardColors.grey;
             }
         };
 
@@ -95,7 +99,9 @@
                         <div class="card-image" draggable="true">
                             <p style="font-weight: bold;">Location: <%= job.location%> </p>
                             
-                            <p> Application deadline: <%= job.deadline.toDateString()%> </p>
+                            <p style="font-weight: bold;">Deadline: <%= job.deadline.toDateString()%> </p>
+                            <p >Contact number: <a href="tel:1234567890" style="color: black;"> <%= job.phone%></a></p>
+                            <p>Contact email: <a href="mailto:joblisting1@example.com" style="color: black;"> <%= job.email%></a></p>
                         </div>
                         <div class="card-des" >
                             <% if (curUser.userType === 'recruiter') { %>
@@ -106,7 +112,7 @@
                             <% } %>
                             <p class="card-description"><%= job.description%></p>
                             
-                            <p>Contact info: <%= job.email%></p>
+                            
                         </div>
                         <div class="drag-button" style="visibility: hidden">
                             <button class="hamburger-button">
@@ -116,12 +122,12 @@
                         </div>
                         <div class="button-group">
                             <% if (curUser.userType === 'recruiter') { %>
-                                <a class="button" href="/jobs/<%=job._id%>/edit">Edit</a>
+                                <a class="edit-button" href="/jobs/<%=job._id%>/edit">Edit</a>
                             <% } %>
 
                             <% if (curUser.userType === 'recruiter') { %>
                                 <form action="/jobs/<%=job._id%>?_method=POST" method="POST">
-                                    <button class="delete-button"> Archive </button>
+                                    <button class="edit-button"> Archive </button>
                                 </form>
                             <% } %>
                 
