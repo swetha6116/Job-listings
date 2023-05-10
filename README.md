@@ -27,8 +27,18 @@ Design Decisions:
 4. Added a grey color on top of the requirements specified so that an applicant knows its past the dealine.
 5. Provided button for edit, archive within the job card for the recruiter for easy access.
 6. Used a index to identify the active and archived job listings.
+
+Schema:
+
+1. Created two collections for users and jobs. 
+2. Stored info like title, description, contact as separate feilds in jobs
+3. Used a boolean to indicate if the job is active or not.
+4. Used an array as a feild of the jobs collection to store the names of interested applicants for a job role.
+5. In users collection, an enum was defined to indicate if the user is a recruiter or an applicant along with name and email.
+
  
 Scalability Concerns:
+
 If the recruiters decide they need a record of all the job listings right from the start then there will a huge amount of listings in the database after years, then to retrieve the active jobs becomes a concern
 
 To solve this we can create two different tables for the active jobs and unactive job listings
@@ -40,13 +50,15 @@ To run this application
 1. Clone the repo
 2. Install node.js
 3. Install mongoDB and mongo shell
-4. run the applciation in localhost 3000
+4. Install the dependencies
+5. Run seed.js to seed intial data into the database
+6. run the applciation in localhost 3000
 ```
 $ git clone https://example.com
 $ cd ../path/to/the/file
 $ npm install
 $ npm init -y
-$ npm install express-session
+$ npm install express express-session
 $ npm install passport passport-local passport-local-mongoose
 $ npm install method-override
 $ node seed.js
